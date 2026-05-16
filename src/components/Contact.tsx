@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { PORTFOLIO_DATA } from '../data';
 
 export const Contact: React.FC = () => {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
@@ -25,15 +26,30 @@ export const Contact: React.FC = () => {
         <div className="flex flex-col lg:flex-row gap-16">
           {/* Social Links */}
           <div className="w-full lg:w-1/3 flex flex-col gap-6">
-            <a href="#" className="p-6 bg-primary/5 border border-primary/20 hover:border-primary transition-all flex items-center justify-between group clickable">
+            <a 
+              href={PORTFOLIO_DATA.socials.github} 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="p-6 bg-primary/5 border border-primary/20 hover:border-primary transition-all flex items-center justify-between group clickable"
+            >
               <span className="font-mono text-sm">GITHUB</span>
               <span className="text-primary group-hover:translate-x-2 transition-transform">→</span>
             </a>
-            <a href="#" className="p-6 bg-primary/5 border border-primary/20 hover:border-primary transition-all flex items-center justify-between group clickable">
+            <a 
+              href={PORTFOLIO_DATA.socials.linkedin} 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="p-6 bg-primary/5 border border-primary/20 hover:border-primary transition-all flex items-center justify-between group clickable"
+            >
               <span className="font-mono text-sm">LINKEDIN</span>
               <span className="text-primary group-hover:translate-x-2 transition-transform">→</span>
             </a>
-            <a href="#" className="p-6 bg-primary/5 border border-primary/20 hover:border-primary transition-all flex items-center justify-between group clickable">
+            <a 
+              href={`https://mail.google.com/mail/?view=cm&fs=1&to=${PORTFOLIO_DATA.socials.email}`}
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="p-6 bg-primary/5 border border-primary/20 hover:border-primary transition-all flex items-center justify-between group clickable"
+            >
               <span className="font-mono text-sm">EMAIL</span>
               <span className="text-primary group-hover:translate-x-2 transition-transform">→</span>
             </a>

@@ -92,5 +92,10 @@ export const PORTFOLIO_DATA = {
       period: "2022 - Present",
       cgpa: "3.22"
     }
-  ]
+  ],
+  socials: {
+    github: "https://github.com/Raza-Hammad", 
+    linkedin: "https://www.linkedin.com/in/muhammad-hammad-raza-7000662b4",
+    email: "hammad183d9@gmail.com"
+  }
 };

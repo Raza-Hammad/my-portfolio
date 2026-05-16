@@ -21,8 +21,12 @@ export const About: React.FC = () => {
             <div className="relative w-48 h-48 flex-shrink-0">
               <div className="absolute inset-0 border border-primary/50 animate-spin-slow" />
               <div className="absolute -inset-2 border border-primary/20 animate-spin-slow [animation-direction:reverse]" />
-              <div className="w-full h-full border-2 border-primary bg-background flex items-center justify-center text-5xl font-bold text-primary relative z-10">
-                HR
+              <div className="w-full h-full border-2 border-primary bg-background flex items-center justify-center relative z-10 overflow-hidden">
+                <img 
+                  src="/MHR.jpeg" 
+                  alt="Muhammad Hammad Raza" 
+                  className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity"
+                />
                 {/* Scanline overlay on photo area */}
                 <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary/10 to-transparent animate-scanline pointer-events-none" />
               </div>
