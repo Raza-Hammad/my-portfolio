@@ -89,7 +89,7 @@ export const PORTFOLIO_DATA = {
     {
       institution: "Bahria University Karachi Campus",
       degree: "Bachelor of Science in Computer Science",
-      period: "2022 - Present",
+      period: "2023 - Present",
       cgpa: "3.22"
     }
   ],
