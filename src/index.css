@@ -1,49 +1,146 @@
 @import "tailwindcss";
 
 @theme {
-  --color-background: #07090f;
-  --color-primary: #00d4ff;
-  --color-secondary: #00ff88;
-  --color-warning: #ff4d6d;
-  --color-accent: #c8d6e5;
+  --color-background: var(--background, #07090f);
+  --color-primary: var(--primary, #00d4ff);
+  --color-secondary: var(--secondary, #00ff88);
+  --color-warning: var(--warning, #ff4d6d);
+  --color-accent: var(--accent, #c8d6e5);
   
   --font-mono: "JetBrains Mono", "Fira Code", monospace;
   --font-sans: "Inter", "Space Grotesk", sans-serif;
 }
 
+:root {
+  --background: #07090f;
+  --primary: #00d4ff;
+  --secondary: #00ff88;
+  --warning: #ff4d6d;
+  --accent: #c8d6e5;
+  
+  --font-sans-fallback: "Inter", "Space Grotesk", sans-serif;
+}
+
 @layer base {
   body {
-    @apply bg-background text-accent font-sans selection:bg-primary selection:text-background overflow-x-hidden;
+    @apply bg-background text-accent font-sans selection:bg-primary selection:text-background overflow-x-hidden transition-colors duration-500;
   }
 
   @media (hover: hover) {
-    * {
+    /* Only hide normal cursor if not touchscreen and custom cursor active */
+    .custom-cursor-active * {
       cursor: none !important;
     }
   }
 
   /* Custom Scrollbar */
   ::-webkit-scrollbar {
-    width: 5px;
+    width: 6px;
+    height: 6px;
   }
   ::-webkit-scrollbar-track {
     @apply bg-background;
   }
   ::-webkit-scrollbar-thumb {
-    @apply bg-primary/20 hover:bg-primary/50 transition-colors;
+    background: color-mix(in srgb, var(--primary) 20%, transparent);
+    border-radius: 3px;
+    transition: background 0.3s;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: color-mix(in srgb, var(--primary) 50%, transparent);
   }
 }
 
-@layer utilities {
-  .text-glow-cyan {
-    text-shadow: 0 0 10px rgba(0, 212, 255, 0.5), 0 0 20px rgba(0, 212, 255, 0.3);
-  }
-  .text-glow-green {
-    text-shadow: 0 0 10px rgba(0, 255, 136, 0.5), 0 0 20px rgba(0, 255, 136, 0.3);
-  }
-  .border-glow-cyan {
-    box-shadow: 0 0 10px rgba(0, 212, 255, 0.3), inset 0 0 10px rgba(0, 212, 255, 0.1);
-  }
+@utility text-glow-primary {
+  text-shadow: 0 0 8px var(--primary), 0 0 15px color-mix(in srgb, var(--primary) 50%, transparent);
+}
+
+@utility text-glow-secondary {
+  text-shadow: 0 0 8px var(--secondary), 0 0 15px color-mix(in srgb, var(--secondary) 50%, transparent);
+}
+
+@utility border-glow-primary {
+  box-shadow: 0 0 8px color-mix(in srgb, var(--primary) 30%, transparent), inset 0 0 8px color-mix(in srgb, var(--primary) 15%, transparent);
+}
+
+@utility border-glow-secondary {
+  box-shadow: 0 0 8px color-mix(in srgb, var(--secondary) 30%, transparent), inset 0 0 8px color-mix(in srgb, var(--secondary) 15%, transparent);
+}
+
+/* Hexagon clip utilities */
+@utility clip-hex {
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+}
+
+@utility perspective-1000 {
+  perspective: 1000px;
+}
+
+@utility preserve-3d {
+  transform-style: preserve-3d;
+}
+
+@utility backface-hidden {
+  backface-visibility: hidden;
+}
+
+@utility rotate-y-180 {
+  transform: rotateY(180deg);
+}
+
+/* Glitch Animation Classes */
+.animate-glitch {
+  position: relative;
+}
+.animate-glitch::before,
+.animate-glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--background);
+}
+.animate-glitch::before {
+  left: 2px;
+  text-shadow: -1px 0 var(--warning);
+  clip: rect(44px, 450px, 56px, 0);
+  animation: glitch-anim 5s infinite linear alternate-reverse;
+}
+.animate-glitch::after {
+  left: -2px;
+  text-shadow: -1px 0 var(--primary);
+  clip: rect(85px, 450px, 140px, 0);
+  animation: glitch-anim2 5s infinite linear alternate-reverse;
+}
+
+@keyframes glitch-anim {
+  0% { clip: rect(15px, 9999px, 66px, 0); }
+  10% { clip: rect(34px, 9999px, 5px, 0); }
+  20% { clip: rect(81px, 9999px, 28px, 0); }
+  30% { clip: rect(12px, 9999px, 92px, 0); }
+  40% { clip: rect(67px, 9999px, 45px, 0); }
+  50% { clip: rect(98px, 9999px, 14px, 0); }
+  60% { clip: rect(2px, 9999px, 73px, 0); }
+  70% { clip: rect(40px, 9999px, 88px, 0); }
+  80% { clip: rect(56px, 9999px, 39px, 0); }
+  90% { clip: rect(88px, 9999px, 52px, 0); }
+  100% { clip: rect(19px, 9999px, 83px, 0); }
+}
+
+@keyframes glitch-anim2 {
+  0% { clip: rect(65px, 9999px, 12px, 0); }
+  10% { clip: rect(8px, 9999px, 95px, 0); }
+  20% { clip: rect(45px, 9999px, 63px, 0); }
+  30% { clip: rect(92px, 9999px, 18px, 0); }
+  40% { clip: rect(14px, 9999px, 74px, 0); }
+  50% { clip: rect(78px, 9999px, 35px, 0); }
+  60% { clip: rect(51px, 9999px, 82px, 0); }
+  70% { clip: rect(3px, 9999px, 49px, 0); }
+  80% { clip: rect(86px, 9999px, 22px, 0); }
+  90% { clip: rect(24px, 9999px, 91px, 0); }
+  100% { clip: rect(70px, 9999px, 57px, 0); }
 }
 
 /* Scanline Effect */
@@ -57,20 +154,20 @@
     rgba(255, 255, 255, 0.02) 50%,
     rgba(0, 0, 0, 0) 100%
   );
-  opacity: 0.1;
+  opacity: 0.12;
   position: fixed;
   bottom: 100%;
   pointer-events: none;
-  animation: scanline 10s linear infinite;
+  animation: scanline 8s linear infinite;
 }
 
 @keyframes fade-in {
-  from { opacity: 0; transform: translateY(20px); }
+  from { opacity: 0; transform: translateY(15px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
 .animate-fade-in {
-  animation: fade-in 1s ease-out forwards;
+  animation: fade-in 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 @keyframes scanline {
@@ -85,25 +182,26 @@
 
 @keyframes fade-out {
   from { opacity: 1; transform: translateY(0); }
-  to { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 0; transform: translateY(-8px); }
 }
 
 .animate-spin-slow {
-  animation: spin-slow 10s linear infinite;
+  animation: spin-slow 12s linear infinite;
 }
 
 .animate-fade-out {
-  animation: fade-out 0.5s ease-out forwards;
+  animation: fade-out 0.4s ease-out forwards;
 }
 
+/* CRT monitor screen bulge simulation & scan overlay */
 .crt-overlay {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
-  background-size: 100% 4px, 3px 100%;
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.08) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.015), rgba(0, 255, 0, 0.005), rgba(0, 0, 255, 0.015));
+  background-size: 100% 3px, 3px 100%;
   pointer-events: none;
   z-index: 9998;
 }
@@ -115,7 +213,25 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url("https://grainy-gradients.vercel.app/noise.svg");
-  opacity: 0.05;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.035'/%3E%3C/svg%3E");
+  opacity: 1;
   pointer-events: none;
+}
+
+/* Subtle border animation utility */
+@keyframes border-glow-cycle {
+  0%, 100% { border-color: color-mix(in srgb, var(--primary) 20%, transparent); }
+  50% { border-color: color-mix(in srgb, var(--primary) 60%, transparent); }
+}
+.border-pulse-glow {
+  animation: border-glow-cycle 3s infinite ease-in-out;
+}
+
+@keyframes scanline-anim {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100%); }
+}
+
+.animate-scanline {
+  animation: scanline-anim 6s linear infinite;
 }

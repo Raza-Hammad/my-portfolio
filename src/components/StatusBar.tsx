@@ -35,8 +35,8 @@ export const StatusBar: React.FC = () => {
   }, []);
 
   return (
-    <div className="fixed right-4 top-1/2 -translate-y-1/2 z-50 flex flex-col items-center">
-      <div className="text-[10px] font-mono text-primary rotate-90 mb-12 w-48 text-center uppercase tracking-widest whitespace-nowrap">
+    <div className="fixed right-4 top-1/2 -translate-y-1/2 z-40 hidden lg:flex flex-col items-center select-none pointer-events-none">
+      <div className="text-[9px] font-mono text-primary rotate-90 mb-12 w-48 text-center uppercase tracking-widest whitespace-nowrap">
         {STATUS_MESSAGES[activeSection] || "SYSTEM IDLE"}
       </div>
       

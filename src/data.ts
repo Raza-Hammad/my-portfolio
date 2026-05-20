@@ -91,6 +91,12 @@ export const PORTFOLIO_DATA = {
       degree: "Bachelor of Science in Computer Science",
       period: "2023 - Present",
       cgpa: "3.22"
+    },
+    {
+      institution: "Bahria College Karsaz, Karachi",
+      degree: "Higher Secondary School Certificate (HSSC) — Pre-Engineering",
+      period: "2020 - 2022",
+      grade: "A Grade"
     }
   ],
   socials: {
