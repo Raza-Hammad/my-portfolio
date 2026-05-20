@@ -7,7 +7,7 @@ export const Achievements: React.FC = () => {
     <section id="achievements" className="min-h-screen py-24 px-6 md:px-24 flex flex-col items-center transition-colors duration-500">
       <div className="w-full max-w-5xl">
         <h2 className="text-2xl md:text-3xl font-mono text-primary mb-16 flex items-center gap-4">
-          <span className="opacity-50 text-base md:text-xl">05.</span> {"> "}MISSION_LOG
+          <span className="opacity-50 text-base md:text-xl">06.</span> {"> "}MISSION_LOG
           <div className="h-[1px] flex-grow bg-primary/20" />
         </h2>
 

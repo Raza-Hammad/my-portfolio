@@ -7,7 +7,7 @@ export const Projects: React.FC = () => {
     <section id="projects" className="min-h-screen py-24 px-6 md:px-24 flex flex-col items-center bg-[#07090f]/40 transition-colors duration-500">
       <div className="w-full max-w-6xl">
         <h2 className="text-2xl md:text-3xl font-mono text-primary mb-16 flex items-center gap-4">
-          <span className="opacity-50 text-base md:text-xl">02.</span> {"> "}ACTIVE_MODULES/
+          <span className="opacity-50 text-base md:text-xl">03.</span> {"> "}ACTIVE_MODULES/
           <div className="h-[1px] flex-grow bg-primary/20" />
         </h2>
 

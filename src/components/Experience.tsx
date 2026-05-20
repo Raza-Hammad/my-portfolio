@@ -1,0 +1,61 @@
+import React from 'react';
+import { PORTFOLIO_DATA } from '../data';
+import { sound } from '../lib/sound';
+
+export const Experience: React.FC = () => {
+  return (
+    <section id="experience" className="min-h-screen py-24 px-6 md:px-24 flex flex-col items-center transition-colors duration-500">
+      <div className="w-full max-w-5xl">
+        <h2 className="text-2xl md:text-3xl font-mono text-primary mb-16 flex items-center gap-4">
+          <span className="opacity-50 text-base md:text-xl">02.</span> {"> "}DEPLOYMENT_HISTORY
+          <div className="h-[1px] flex-grow bg-primary/20" />
+        </h2>
+
+        <div className="space-y-12">
+          {PORTFOLIO_DATA.experience.map((exp, i) => (
+            <div key={i} className="relative pl-8 md:pl-12 border-l-2 border-primary/20 py-4 group select-none">
+              {/* Dynamic blinking timeline node */}
+              <div className="absolute left-[-9px] top-6 w-4 h-4 bg-[#07090f] border-2 border-primary rounded-full group-hover:scale-125 group-hover:border-secondary transition-all" />
+              
+              <div 
+                className="bg-primary/5 border border-primary/10 p-6 md:p-8 rounded-sm hover:border-primary/45 hover:bg-primary/10 transition-all border-pulse-glow"
+                onMouseEnter={() => sound.playTyping()}
+                onClick={() => sound.playClick()}
+              >
+                <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
+                  <div>
+                    <h3 className="text-lg md:text-xl font-bold font-mono text-white group-hover:text-primary transition-colors leading-tight">
+                      {exp.company}
+                    </h3>
+                    <p className="text-secondary font-mono text-xs md:text-sm mt-1">{exp.role}</p>
+                  </div>
+                  <div className="text-left md:text-right">
+                    <span className="bg-primary/20 text-primary px-3.5 py-1 text-[10px] md:text-xs font-mono rounded-full border border-primary/10">
+                      {exp.period}
+                    </span>
+                  </div>
+                </div>
+
+                <ul className="space-y-3 font-mono text-xs text-white/70 leading-relaxed list-none">
+                  {exp.details.map((detail, idx) => (
+                    <li key={idx} className="flex items-start gap-2.5">
+                      <span className="text-primary font-bold mt-0.5">&gt;&gt;</span>
+                      <span>{detail}</span>
+                    </li>
+                  ))}
+                </ul>
+
+                {/* Status indicator stamp on hover */}
+                <div className="absolute top-4 right-4 opacity-5 group-hover:opacity-100 transition-all duration-500 scale-75 md:scale-100 select-none pointer-events-none">
+                  <div className="border border-dashed border-secondary text-secondary font-bold px-4 py-1 rotate-12 uppercase text-[9px] tracking-[0.25em]">
+                    ACTIVE // LOGGED
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};

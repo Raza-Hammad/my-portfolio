@@ -77,30 +77,42 @@ export const ThreatSimulator: React.FC = () => {
     if (!ctx) return;
 
     let animId: number;
-    const isMobile = window.innerWidth < 768;
-    canvas.width = isMobile ? 320 : 420;
-    canvas.height = 300;
-
-    const centerX = canvas.width / 2;
-    const centerY = canvas.height / 2;
+    let centerX = canvas.width / 2;
+    let centerY = canvas.height / 2;
     
     // Nodes
     const coreNode = { x: centerX, y: centerY, r: 18, pulse: 0 };
     let attackers: { x: number; y: number; r: number; active: boolean; label: string }[] = [];
     
-    // Attacker position configurations
-    const count = 3;
-    for (let i = 0; i < count; i++) {
-      const angle = (i / count) * Math.PI * 2 - Math.PI / 2;
-      const dist = isMobile ? 110 : 140;
-      attackers.push({
-        x: centerX + Math.cos(angle) * dist,
-        y: centerY + Math.sin(angle) * dist,
-        r: 8,
-        active: false,
-        label: `BOT_0${i+1}`
-      });
-    }
+    const setupNodes = () => {
+      centerX = canvas.width / 2;
+      centerY = canvas.height / 2;
+      coreNode.x = centerX;
+      coreNode.y = centerY;
+      
+      const isMobile = window.innerWidth < 768;
+      const dist = isMobile ? 100 : 140;
+      attackers = [];
+      const count = 3;
+      for (let i = 0; i < count; i++) {
+        const angle = (i / count) * Math.PI * 2 - Math.PI / 2;
+        attackers.push({
+          x: centerX + Math.cos(angle) * dist,
+          y: centerY + Math.sin(angle) * dist,
+          r: 8,
+          active: false,
+          label: `BOT_0${i+1}`
+        });
+      }
+    };
+
+    const resize = () => {
+      const parent = canvas.parentElement;
+      const parentWidth = parent ? parent.clientWidth : 320;
+      canvas.width = Math.min(parentWidth - 24, 420);
+      canvas.height = 300;
+      setupNodes();
+    };
 
     // Packets
     let packets: { x: number; y: number; tx: number; ty: number; speed: number; progress: number; type: string }[] = [];
@@ -326,16 +338,12 @@ export const ThreatSimulator: React.FC = () => {
 
     mainAnimate();
 
-    const handleResize = () => {
-      const isMobile = window.innerWidth < 768;
-      canvas.width = isMobile ? 320 : 420;
-      canvas.height = 300;
-    };
-    window.addEventListener('resize', handleResize);
+    window.addEventListener('resize', resize);
+    resize();
 
     return () => {
       cancelAnimationFrame(animId);
-      window.removeEventListener('resize', handleResize);
+      window.removeEventListener('resize', resize);
     };
   }, [firewallActive, activeAttack, threatScore]);
 
@@ -416,12 +424,12 @@ export const ThreatSimulator: React.FC = () => {
     <section id="threat-simulator" className="min-h-screen py-24 px-6 md:px-24 flex flex-col items-center bg-[#07090f]/30 transition-colors duration-500">
       <div className="w-full max-w-5xl">
         <h2 className="text-2xl md:text-3xl font-mono text-primary mb-12 flex items-center gap-4">
-          <span className="opacity-50 text-base md:text-xl">02.5.</span> {"> "}CYBER_THREAT_SIMULATION
+          <span className="opacity-50 text-base md:text-xl">04.</span> {"> "}CYBER_THREAT_SIMULATION
           <div className="h-[1px] flex-grow bg-primary/20" />
         </h2>
 
         {/* Dashboard Frame */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 bg-primary/5 border border-primary/20 p-6 md:p-8 rounded-sm relative overflow-hidden border-pulse-glow">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 bg-primary/5 border border-primary/20 p-4 md:p-8 rounded-sm relative overflow-hidden border-pulse-glow">
           <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(0,212,255,0.005)_1px,transparent_1px),linear-gradient(to_bottom,rgba(0,212,255,0.005)_1px,transparent_1px)] bg-[size:1.5rem_1.5rem] pointer-events-none" />
 
           {/* Left Column: Diagnostics & Control widgets */}

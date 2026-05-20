@@ -140,7 +140,7 @@ export const Terminal: React.FC<TerminalProps> = ({ isOpen, onClose }) => {
           { text: "  about            - Display core dossier profile", type: 'output' },
           { text: "  projects         - List developed repositories and applications", type: 'output' },
           { text: "  skills           - Chart tech stack proficiencies in terminal bars", type: 'output' },
-          { text: "  download-resume  - Retrieve Hammad Raza's master PDF resume", type: 'output' },
+          { text: "  download-resume  - Retrieve Muhammad Hammad Raza's master PDF resume", type: 'output' },
           { text: "  matrix           - Toggles digital code cascade overlay", type: 'output' },
           { text: "  hack             - Execute secure mainframe bypass simulation", type: 'output' },
           { text: "  clear            - Purge screen buffer logs", type: 'output' },
@@ -340,7 +340,10 @@ export const Terminal: React.FC<TerminalProps> = ({ isOpen, onClose }) => {
 
       {/* Input panel */}
       <div className="h-12 border-t border-primary/20 bg-[#07090f] p-4 flex items-center gap-2 z-10">
-        <span className="text-secondary font-bold shrink-0">guest@mhr-terminal:~$</span>
+        <span className="text-secondary font-bold shrink-0">
+          <span className="hidden sm:inline">guest@mhr-terminal:~$</span>
+          <span className="inline sm:hidden">mhr:~$</span>
+        </span>
         <input 
           ref={inputRef}
           type="text" 

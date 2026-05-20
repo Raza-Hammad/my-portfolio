@@ -99,6 +99,18 @@ export const PORTFOLIO_DATA = {
       grade: "A Grade"
     }
   ],
+  experience: [
+    {
+      company: "HNH Soft Tech Solutions",
+      role: "Frontend Developer",
+      period: "May 2026 - Present",
+      details: [
+        "Developing responsive, high-performance web applications using React, JavaScript, and advanced frontend frameworks.",
+        "Optimizing UI/UX components for mobile responsiveness and fluid cross-device performance.",
+        "Integrating secure data APIs and implementing modern state management strategies."
+      ]
+    }
+  ],
   socials: {
     github: "https://github.com/Raza-Hammad", 
     linkedin: "https://www.linkedin.com/in/muhammad-hammad-raza-7000662b4",

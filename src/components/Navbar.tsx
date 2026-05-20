@@ -155,7 +155,7 @@ export const Navbar: React.FC<NavbarProps> = ({
   return (
     <>
       {/* Top HUD Navbar */}
-      <header className="fixed top-0 left-0 w-full z-40 bg-background/80 backdrop-blur-md border-b border-primary/20 font-mono text-xs text-accent select-none transition-colors duration-500">
+      <header className="fixed top-0 left-0 w-full z-40 bg-background/95 backdrop-blur-md border-b border-primary/45 font-mono text-xs text-accent select-none transition-colors duration-500 shadow-[0_2px_15px_rgba(0,212,255,0.08)]">
         <div className="max-w-7xl mx-auto px-4 md:px-8 h-14 flex items-center justify-between">
           
           {/* Brand/Identity */}
@@ -166,7 +166,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               onMouseEnter={() => sound.playTyping()}
             >
               <span className="text-primary font-mono">&lt;</span>
-              M_HAMMAD_RAZA
+              MUHAMMAD_HAMMAD_RAZA
               <span className="text-primary font-mono">/&gt;</span>
             </span>
             
@@ -184,7 +184,7 @@ export const Navbar: React.FC<NavbarProps> = ({
 
           {/* Desktop Navigation Links */}
           <nav className="hidden xl:flex items-center gap-6">
-            {['about', 'projects', 'skills', 'education', 'achievements', 'contact'].map((sect, i) => (
+            {['about', 'experience', 'projects', 'skills', 'education', 'achievements', 'contact'].map((sect, i) => (
               <button
                 key={sect}
                 onClick={() => scrollToSection(sect)}
@@ -353,7 +353,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               -- OPERATIVE OPTIONS --
             </div>
 
-            {['about', 'projects', 'skills', 'education', 'achievements', 'contact'].map((sect, i) => (
+            {['about', 'experience', 'projects', 'skills', 'education', 'achievements', 'contact'].map((sect, i) => (
               <button
                 key={sect}
                 onClick={() => scrollToSection(sect)}

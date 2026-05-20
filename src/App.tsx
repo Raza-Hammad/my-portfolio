@@ -9,6 +9,7 @@ import { About } from './components/About';
 import { Projects } from './components/Projects';
 import { ThreatSimulator } from './components/ThreatSimulator';
 import { Skills } from './components/Skills';
+import { Experience } from './components/Experience';
 import { Education } from './components/Education';
 import { Achievements } from './components/Achievements';
 import { Contact } from './components/Contact';
@@ -111,6 +112,7 @@ function App() {
           <main className="relative z-10 pt-14">
             <Hero />
             <About />
+            <Experience />
             <Projects />
             <ThreatSimulator />
             <Skills />
@@ -118,8 +120,8 @@ function App() {
             <Achievements />
             <Contact />
             
-            <footer className="py-12 text-center font-mono text-[9px] text-primary/30 uppercase tracking-[0.5em] px-4 leading-loose border-t border-primary/5 max-w-5xl mx-auto">
-              © 2026 Operative Hammad Raza // SECURE SECTOR // ALL RIGHTS RESERVED
+            <footer className="py-12 text-center font-mono text-[10px] text-primary/70 uppercase tracking-[0.4em] px-4 leading-loose border-t border-primary/20 max-w-5xl mx-auto hover:text-primary transition-colors duration-300">
+              © 2026 Operative Muhammad Hammad Raza // SECURE SECTOR // ALL RIGHTS RESERVED
             </footer>
           </main>
         </>

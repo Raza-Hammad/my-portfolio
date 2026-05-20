@@ -7,7 +7,7 @@ export const Education: React.FC = () => {
     <section id="education" className="min-h-screen py-24 px-6 md:px-24 flex flex-col items-center bg-[#07090f]/40 transition-colors duration-500">
       <div className="w-full max-w-5xl">
         <h2 className="text-2xl md:text-3xl font-mono text-primary mb-16 flex items-center gap-4">
-          <span className="opacity-50 text-base md:text-xl">04.</span> {"> "}CLEARANCE_RECORDS
+          <span className="opacity-50 text-base md:text-xl">05.</span> {"> "}CLEARANCE_RECORDS
           <div className="h-[1px] flex-grow bg-primary/20" />
         </h2>
 

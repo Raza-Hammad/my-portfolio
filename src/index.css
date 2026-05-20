@@ -105,13 +105,13 @@
 .animate-glitch::before {
   left: 2px;
   text-shadow: -1px 0 var(--warning);
-  clip: rect(44px, 450px, 56px, 0);
+  clip: rect(44px, 9999px, 56px, 0);
   animation: glitch-anim 5s infinite linear alternate-reverse;
 }
 .animate-glitch::after {
   left: -2px;
   text-shadow: -1px 0 var(--primary);
-  clip: rect(85px, 450px, 140px, 0);
+  clip: rect(85px, 9999px, 140px, 0);
   animation: glitch-anim2 5s infinite linear alternate-reverse;
 }
 

@@ -157,7 +157,7 @@ export const Skills: React.FC = () => {
     <section id="skills" className="min-h-screen py-24 px-6 md:px-24 flex flex-col items-center transition-colors duration-500">
       <div className="w-full max-w-5xl">
         <h2 className="text-2xl md:text-3xl font-mono text-primary mb-16 flex items-center gap-4">
-          <span className="opacity-50 text-base md:text-xl">03.</span> {"> "}ARSENAL_DETECTION
+          <span className="opacity-50 text-base md:text-xl">04.</span> {"> "}ARSENAL_DETECTION
           <div className="h-[1px] flex-grow bg-primary/20" />
         </h2>
 
